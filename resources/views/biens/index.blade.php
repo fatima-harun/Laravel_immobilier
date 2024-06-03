@@ -6,7 +6,7 @@
 </head>
 <body>
     <div class="container mt-5">
-        <a href="/ajoutBien"> <button>Ajouter un bien</button></a>
+        <a href="/ajoutBien"><button class="btn btn-success mb-4">Ajouter un bien</button></a>
         <h1 class="mb-4">Liste des Biens</h1>
         @if($biens->isEmpty())
             <div class="alert alert-info">Aucun bien disponible.</div>
@@ -19,6 +19,7 @@
                         <th>Description</th>
                         <th>Adresse</th>
                         <th>Statut</th>
+                        <th>Catégorie</th>
                         <th>Date d'ajout</th>
                         <th>Actions</th>
                     </tr>
@@ -31,6 +32,7 @@
                             <td>{{ Str::limit($bien->description, 100) }}</td>
                             <td>{{ $bien->adresse }}</td>
                             <td>{{ $bien->statut ? 'Occupé' : 'Libre' }}</td>
+                            <td>{{ $bien->categorie->nom }}</td>
                             <td>{{ $bien->created_at }}</td>
                             <td>
                                 <a href="/detailsBien/{{ $bien->id }}" class="btn btn-info btn-sm">Voir</a>

@@ -10,6 +10,15 @@
         <form action="/sauvegardeBien" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
+                <label for="categorie_id">Catégorie</label>
+                <select class="form-control" id="categorie_id" name="categorie_id" required>
+                    <option value="" disabled selected>Choisir une catégorie</option>
+                    @foreach($categories as $categorie)
+                        <option value="{{ $categorie->id }}">{{ $categorie->nom }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="nom">Nom</label>
                 <input type="text" class="form-control" id="nom" name="nom" required>
             </div>

@@ -12,9 +12,15 @@ class Bien extends Model
         'nom',
         'image',
         'description',
+        'categorie_id',
         'adresse',
         'statut',
     ];
+    public function categorie()
+    {
+        return $this->belongsTo(Categorie::class);
+    }
+   
 }
 
 

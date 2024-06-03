@@ -18,6 +18,7 @@ class CategorieController extends Controller
         Categorie::create($request->all());
         return back();
     }
+    
     public function modifierCategorie($id)
     {
         $categorie = Categorie::find($id);
