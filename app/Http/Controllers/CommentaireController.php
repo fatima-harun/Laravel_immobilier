@@ -12,7 +12,14 @@ class CommentaireController extends Controller
         return view('commentaires.index',compact('commentaires'));
     }
 
-    // public function ajoutcommentaire(){
-    //    ;
-    // }
+    public function ajoutcommentaire(){
+        return view('commentaires.formulaire');
+       ;
+    }
+    public function sauvegardecommentaire(Request $request){
+        Commentaire::create($request->all());
+        return redirect('/index');
+       ;
+    }
+
 }

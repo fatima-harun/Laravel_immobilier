@@ -14,4 +14,6 @@ use App\Http\Controllers\CommentaireController;
 |
 */
 
-Route::get('/index',[CommentaireController::class,'affichercommentaire']);;
+Route::get('/index',[CommentaireController::class,'affichercommentaire']);
+Route::get('/formulaire',[CommentaireController::class,'ajoutcommentaire']);
+Route::post('/sauvegarde',[CommentaireController::class,'sauvegardecommentaire']);
