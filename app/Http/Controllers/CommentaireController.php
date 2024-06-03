@@ -21,5 +21,15 @@ class CommentaireController extends Controller
         return redirect('/index');
        ;
     }
+    public function recuperercommentaire($id){
+        $commentaires = Commentaire::find($id);
+         return view('commentaires.recuperation',compact('commentaires'));
+    }
+
+    public function modifiercommentaire(Request $request){
+       $commentaire = Commentaire::find($request->id);
+       $commentaire->update($request->all());
+       return redirect('/index');
+    }
 
 }
