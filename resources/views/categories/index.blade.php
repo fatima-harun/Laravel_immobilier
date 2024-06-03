@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Catégories</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2>Ajouter une nouvelle Catégorie</h2>
+            
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            <form action="/sauvegardeCategorie" method="POST">
+                @csrf
+                <div class="form-group">
+                    <label for="nom">Nom</label>
+                    <input type="text" name="nom" class="form-control" id="nom" placeholder="Entrer le nom de la catégorie">
+                </div>
+                <button type="submit" class="btn btn-primary">Ajouter une Catégorie</button>
+            </form>
+
+            <hr>
+
+            <h2>Listes des Catégories</h2>
+            @if($categories->isEmpty())
+                <p>pas de Catégories disponibles.</p>
+            @else
+                <ul class="list-group">
+                    @foreach($categories as $categorie)
+                        <li class="list-group-item">{{ $categorie->nom }}</li>
+                    @endforeach
+                </ul>
+            @endif
+        </div>
+    </div>
+</div>
+</body>
+</html>

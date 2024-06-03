@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BienController;
+use App\Http\Controllers\CategorieController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentaireController;
 
@@ -34,4 +35,7 @@ Route::post('/sauvegarde',[CommentaireController::class,'sauvegardecommentaire']
 Route::get('/recuperer/{id}',[CommentaireController::class,'recuperercommentaire']);
 Route::patch('/modifier',[CommentaireController::class,'modifiercommentaire']);
 Route::get('/supprimer/{id}',[CommentaireController::class,'supprimercommentaire']);
+
+Route::get('/categories/index', [CategorieController::class, 'listeCategorie']);
+Route::post('/sauvegardeCategorie', [CategorieController::class, 'sauvegardeCategorie'] );
 
