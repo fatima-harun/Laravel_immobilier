@@ -12,6 +12,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{ $bien->nom }}</h5>
                 <p class="card-text">Image: <img src="{{ $bien->image }}" alt="{{ $bien->nom }}" class="img-fluid" style="max-width: 100px;"></p>
+                <p class="card-text">Catégorie: {{ $bien->categorie->nom }}</p>
                 <p class="card-text">Description: {{ $bien->description }}</p>
                 <p class="card-text">Adresse: {{ $bien->adresse }}</p>
                 <p class="card-text">Statut: {{ $bien->statut ? 'Occupé' : 'Libre' }}</p>

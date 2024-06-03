@@ -27,7 +27,8 @@ class BienController extends Controller
     public function modifierBien($id)
     {
         $bien = Bien::find($id);
-        return view('/biens/modificationBien', compact('bien'));
+        $categories = Categorie::all();
+        return view('biens.modificationBien', compact('bien', 'categories'));
     }
     public function sauvegardeMofication(Request $request)
     {

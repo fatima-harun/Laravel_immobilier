@@ -15,6 +15,16 @@
                 <input type="text" class="form-control" id="nom" name="nom" value="{{ $bien->nom }}">
             </div>
             <div class="form-group">
+                <label for="categorie_id">Catégorie</label>
+                <select class="form-control" id="categorie_id" name="categorie_id">
+                    @foreach($categories as $categorie)
+                        <option value="{{ $categorie->id }}" {{ $bien->categorie_id == $categorie->id ? 'selected' : '' }}>
+                            {{ $categorie->nom }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="image">Image</label>
                 <input type="text" class="form-control" id="image" name="image" value="{{ $bien->image }}">
             </div>
