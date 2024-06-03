@@ -23,3 +23,5 @@ Route::post('/sauvegarde',[BienController::class, 'sauvegardeBien']);
 Route::get('/suprimmerBien/{bien}', [BienController::class, 'suprimmerBien']);
 Route::get('/modifierBien/{bien}', [BienController::class, 'modifierBien']);
 Route::post('/sauvegardeMofication', [BienController::class, 'sauvegardeMofication']);
+Route::get("/detailsBien/{id}", [BienController::class, 'detailsBien']);
+

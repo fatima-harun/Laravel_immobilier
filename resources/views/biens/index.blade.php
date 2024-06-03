@@ -33,7 +33,7 @@
                             <td>{{ $bien->statut ? 'Occupé' : 'Libre' }}</td>
                             <td>{{ $bien->created_at }}</td>
                             <td>
-                                <a href="#" class="btn btn-info btn-sm">Voir</a>
+                                <a href="/detailsBien/{{ $bien->id }}" class="btn btn-info btn-sm">Voir</a>
                                 <a href="/modifierBien/{{ $bien->id }}" class="btn btn-primary btn-sm">Modifier</a>
                                 <a href="/suprimmerBien/{{ $bien->id }}" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ?')">Supprimer</a>
                             </td>

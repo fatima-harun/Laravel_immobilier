@@ -32,6 +32,12 @@ class BienController extends Controller
         $bien->update($request->all());
         return redirect("/biens/index");
     }
+    public function detailsBien($id)
+    {
+        $bien = Bien::find($id);
+        return view('/biens/details' , compact('bien'));
+    }
+
     public function suprimmerBien($id)
     {
         $bien = Bien::find($id);
