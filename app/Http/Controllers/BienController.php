@@ -32,7 +32,6 @@ class BienController extends Controller
         $bien->update($request->all());
         return redirect("/biens/index");
     }
-
     public function suprimmerBien($id)
     {
         $bien = Bien::find($id);
