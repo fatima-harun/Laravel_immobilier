@@ -8,6 +8,9 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+    <a href="">
+        <button>Ajouter</button>
+    </a>
     <div class="container mt-5">
         <h1 class="mb-4">Commentaires</h1>
         <div class="list-group">
