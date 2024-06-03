@@ -14,4 +14,5 @@ use App\Http\Controllers\CommentaireController;
 |
 */
 
-Route::get('/index',[CommentaireController::class,'indexcommentaire']);
+Route::get('/index',[CommentaireController::class,'affichercommentaire']);
+Route::post('/sauvegarde',[CommentaireController::class,'sauvegardecommentaire']);
