@@ -21,4 +21,21 @@ class BienController extends Controller
         Bien::create($request->all());
         return redirect("/biens/index");
     }
+    public function modifierBien($id)
+    {
+        $bien = Bien::find($id);
+        return view('/biens/modificationBien', compact('bien'));
+    }
+    public function sauvegardeMofication(Request $request)
+    {
+        $bien = Bien::find($request->id);
+        $bien->update($request->all());
+        return redirect("/biens/index");
+    }
+    public function suprimmerBien($id)
+    {
+        $bien = Bien::find($id);
+        $bien->delete();  
+        return back();
+    }
 }
