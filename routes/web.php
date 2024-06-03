@@ -20,3 +20,6 @@ Route::get('/', function () {
 Route::get("biens/index" ,[BienController::class, 'listeBien']);
 Route::get("/ajoutBien", [BienController::class, 'ajoutBien']);
 Route::post('/sauvegarde',[BienController::class, 'sauvegardeBien']);
+Route::get('/suprimmerBien/{bien}', [BienController::class, 'suprimmerBien']);
+Route::get('/modifierBien/{bien}', [BienController::class, 'modifierBien']);
+Route::post('/sauvegardeMofication', [BienController::class, 'sauvegardeMofication']);
