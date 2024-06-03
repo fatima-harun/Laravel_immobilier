@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Bien;
 use App\Models\Categorie;
+use App\Models\Personnel;
 
 class BienController extends Controller
 {
@@ -15,9 +16,9 @@ class BienController extends Controller
     }
     public function ajoutBien()
     {
-
         $categories = Categorie::all();
-        return view('biens.ajoutBien', compact('categories'));
+        $personnel = Personnel::all(); // Supposons que vous avez un modèle Personnel pour le personnel
+        return view('biens.ajoutBien', compact('categories', 'personnel'));
     }
     public function sauvegardeBien(Request $request)
     {

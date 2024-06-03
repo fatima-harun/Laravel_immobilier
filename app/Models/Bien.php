@@ -13,12 +13,17 @@ class Bien extends Model
         'image',
         'description',
         'categorie_id',
+        'personnel_id',
         'adresse',
         'statut',
     ];
     public function categorie()
     {
         return $this->belongsTo(Categorie::class);
+    }
+    public function personnel()
+    {
+        return $this->belongsTo(Personnel::class);
     }
    
 }
