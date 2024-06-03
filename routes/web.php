@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BienController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CommentaireController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -24,4 +26,12 @@ Route::get('/suprimmerBien/{bien}', [BienController::class, 'suprimmerBien']);
 Route::get('/modifierBien/{bien}', [BienController::class, 'modifierBien']);
 Route::post('/sauvegardeMofication', [BienController::class, 'sauvegardeMofication']);
 Route::get("/detailsBien/{id}", [BienController::class, 'detailsBien']);
+
+
+Route::get('/index',[CommentaireController::class,'affichercommentaire']);
+Route::get('/formulaire',[CommentaireController::class,'ajoutcommentaire']);
+Route::post('/sauvegarde',[CommentaireController::class,'sauvegardecommentaire']);
+Route::get('/recuperer/{id}',[CommentaireController::class,'recuperercommentaire']);
+Route::patch('/modifier',[CommentaireController::class,'modifiercommentaire']);
+Route::get('/supprimer/{id}',[CommentaireController::class,'supprimercommentaire']);
 
