@@ -21,6 +21,9 @@
                     <a href="/recuperer/{{$commentaire->id}}">
                         <button>modifier</button>
                     </a>
+                    <a href="/supprimer/{{$commentaire->id}}" onclick="return confirm('Voulez-vous vraiment supprimer le commentaire')">
+                        <button>supprimer</button>
+                    </a>
                 </div>
             @endforeach
         </div>

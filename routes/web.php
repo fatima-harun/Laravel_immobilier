@@ -19,3 +19,4 @@ Route::get('/formulaire',[CommentaireController::class,'ajoutcommentaire']);
 Route::post('/sauvegarde',[CommentaireController::class,'sauvegardecommentaire']);
 Route::get('/recuperer/{id}',[CommentaireController::class,'recuperercommentaire']);
 Route::patch('/modifier',[CommentaireController::class,'modifiercommentaire']);
+Route::get('/supprimer/{id}',[CommentaireController::class,'supprimercommentaire']);

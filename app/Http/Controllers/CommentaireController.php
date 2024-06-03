@@ -31,5 +31,10 @@ class CommentaireController extends Controller
        $commentaire->update($request->all());
        return redirect('/index');
     }
+    public function supprimercommentaire($id){
+     $commentaire = Commentaire::find($id);
+     $commentaire->delete();
+     return back();
+    }
 
 }
