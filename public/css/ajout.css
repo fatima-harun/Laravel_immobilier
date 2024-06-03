@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+:root{
+ --police-titre:'Lato';
+ --police-paragraphe:'Open sans'
+}
+
+.navbar-brand img{
+    height: auto;
+    width: 50px;
+}
+.navbar-nav{
+    font-family: Open sans;
+    font-size:15px;
+    gap:40px;
+}
+.nav-link{
+    color:white
+}
+.authentification button {
+    background-color:transparent;
+    color: white;
+    border-color: white;
+    border-radius: 20px;
+    border-width: thin;
+}
+.custom-header-bg{
+    background-color: #0e2442;
+}
+
+.first_input{
+    display:flex;
+    justify-content: space-around;
+}
+.form{
+    display:flex
+}
+input{
+    margin-bottom: 35px;
+}
+select{
+    margin-bottom:35px
+}
+textarea{
+    margin-bottom: 12px;
+}
+input{
+    color:#b2bec3;
+}
+.btn-custom {
+    background-color:#0e2442; /* Remplacez cette couleur par celle de votre choix */
+    color: white;
+    border: none;
+    width: 100%;
+}
+.img-fluid{
+    height: 90vh;
+}
+
