@@ -18,3 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get("biens/index" ,[BienController::class, 'listeBien']);
+Route::get("/ajoutBien", [BienController::class, 'ajoutBien']);
+Route::post('/sauvegarde',[BienController::class, 'sauvegardeBien']);

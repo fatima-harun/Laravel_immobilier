@@ -12,4 +12,13 @@ class BienController extends Controller
         $biens = Bien::all();
         return view('/biens/index',compact('biens'));
     }
+    public function ajoutBien()
+    {
+        return view('/biens/ajoutBien');
+    }
+    public function sauvegardeBien(Request $request)
+    {
+        Bien::create($request->all());
+        return redirect("/biens/index");
+    }
 }

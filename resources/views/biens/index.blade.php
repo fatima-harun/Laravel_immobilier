@@ -6,6 +6,7 @@
 </head>
 <body>
     <div class="container mt-5">
+        <a href="/ajoutBien"> <button>Ajouter un bien</button></a>
         <h1 class="mb-4">Liste des Biens</h1>
         @if($biens->isEmpty())
             <div class="alert alert-info">Aucun bien disponible.</div>
@@ -34,11 +35,7 @@
                             <td>
                                 <a href="#" class="btn btn-info btn-sm">Voir</a>
                                 <a href="#" class="btn btn-primary btn-sm">Modifier</a>
-                                <form action="#" method="POST" style="display:inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
-                                </form>
+                                <a href="#" class="btn btn-danger btn-sm">Supprimer</a>
                             </td>
                         </tr>
                     @endforeach
