@@ -4,6 +4,7 @@ use App\Http\Controllers\BienController;
 use App\Http\Controllers\CategorieController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentaireController;
+use App\Models\Categorie;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,4 +39,6 @@ Route::get('/supprimer/{id}',[CommentaireController::class,'supprimercommentaire
 
 Route::get('/categories/index', [CategorieController::class, 'listeCategorie']);
 Route::post('/sauvegardeCategorie', [CategorieController::class, 'sauvegardeCategorie'] );
+Route::get("/modifierCategorie/{id}", [CategorieController::class, 'modifierCategorie']);
+Route::post('/sauvegardeMoficationCategorie', [CategorieController::class,'sauvegardeMoficationCategorie']);
 
