@@ -24,7 +24,7 @@ Route::get('/', function () {
 Route::get("biens/index" ,[BienController::class, 'listeBien']);
 Route::get("/ajoutBien", [BienController::class, 'ajoutBien']);
 Route::post('/sauvegardeBien',[BienController::class, 'sauvegardeBien']);
-Route::get('/suprimmerBien/{bien}', [BienController::class, 'suprimmerBien']);
+Route::get('/supprimerBien/{bien}', [BienController::class, 'supprimerBien']);
 Route::get('/modifierBien/{bien}', [BienController::class, 'modifierBien']);
 Route::post('/sauvegardeMofication', [BienController::class, 'sauvegardeMofication']);
 Route::get("/detailsBien/{id}", [BienController::class, 'detailsBien']);
@@ -41,4 +41,5 @@ Route::get('/categories/index', [CategorieController::class, 'listeCategorie']);
 Route::post('/sauvegardeCategorie', [CategorieController::class, 'sauvegardeCategorie'] );
 Route::get("/modifierCategorie/{id}", [CategorieController::class, 'modifierCategorie']);
 Route::post('/sauvegardeMoficationCategorie', [CategorieController::class,'sauvegardeMoficationCategorie']);
+Route::get("/supprimerCategorie/{id}", [CategorieController::class, 'supprimerCategorie']);
 

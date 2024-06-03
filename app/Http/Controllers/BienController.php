@@ -38,7 +38,7 @@ class BienController extends Controller
         return view('/biens/details' , compact('bien'));
     }
 
-    public function suprimmerBien($id)
+    public function supprimerBien($id)
     {
         $bien = Bien::find($id);
         $bien->delete();  

@@ -28,7 +28,12 @@ class CategorieController extends Controller
         $categorie=Categorie::find($request->id);
         $categorie->update($request->all());
         return redirect("/categories/index");
-
+    }
+    public function supprimerCategorie($id)
+    {
+        $categorie = Categorie::find($id);
+        $categorie ->delete();
+        return back();
 
     }
 }
