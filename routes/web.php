@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\BienController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BienController;
 use App\Http\Controllers\CommentaireController;
+use App\Http\Controllers\RegisterController;
+
 
 /*
 |--------------------------------------------------------------------------

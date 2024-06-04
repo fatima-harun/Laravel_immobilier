@@ -10,6 +10,12 @@ class Commentaire extends Model
     use HasFactory;
 
     protected $fillable = [
-      'contenu'
+      'auteur',
+      'contenu',
+      'bien_id',
+
     ];
+    public function bien():BelongsTo{
+        return $this->Belongsto(Bien::class);
+    }
 }

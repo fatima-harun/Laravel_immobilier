@@ -13,8 +13,12 @@
         <form action="/sauvegarde" method="POST">
             @csrf
             <div class="form-group">
+                <label for="nom">Auteur</label>
+                <input type="text"name="auteur" id="nom" placeholder="Donner votre nom" required>
+            </div>
+            <div class="form-group">
                 <label for="content">Contenu du Commentaire</label>
-                <textarea class="form-control" id="content" name="contenu" rows="4" required></textarea>
+                <textarea class="form-control" id="content" name="contenu" rows="4" required placeholder="Votre commentaire"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Ajouter</button>
         </form>

@@ -15,6 +15,9 @@ class Bien extends Model
         'adresse',
         'statut',
     ];
+    public function commentaires():HasMany{
+       return $this->hasMany(Commentaire::class);
+    }
 }
 
 
