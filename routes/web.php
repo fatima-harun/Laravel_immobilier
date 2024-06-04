@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BienController;
 use App\Http\Controllers\CategorieController;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,6 @@ Route::get("/modifierCategorie/{id}", [CategorieController::class, 'modifierCate
 Route::post('/sauvegardeMoficationCategorie', [CategorieController::class,'sauvegardeMoficationCategorie']);
 Route::get("/supprimerCategorie/{id}", [CategorieController::class, 'supprimerCategorie']);
 
-Route::get('/inscription', [PersonnelController::class, 'ajoutPersonnel']);
-Route::post('/sauvegardePersonnel', [PersonnelController::class, 'sauvegardePersonnel']);
+Route::get('/inscription', [RegisterController::class, 'ajoutPersonnel']);
+Route::post('/sauvegardePersonnel', [RegisterController::class, 'sauvegardePersonnel']);
 
