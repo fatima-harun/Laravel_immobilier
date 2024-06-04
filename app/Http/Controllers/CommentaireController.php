@@ -4,33 +4,38 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Commentaire;
+use App\Models\Bien;
 
 class CommentaireController extends Controller
 {
-    public function affichercommentaire(){
-        $commentaires = Commentaire::All();
-        return view('commentaires.index',compact('commentaires'));
+    public function affichercommentaire($id)
+    {
+         $bien = Bien::with('commentaires')->find($id);
+        return view('/biens/details/{{$bien->id}}',compact('bien'));
     }
-
-    public function ajoutcommentaire(){
-        return view('commentaires.formulaire');
-       ;
+   
+    public function sauvegardecommentaire(Request $request, $bien_id){
+        $bien = Bien::find($bien_id);
+        Commentaire::create([
+            'auteur' => $request->input('auteur'),
+            'contenu' => $request->input('contenu'),
+            'bien_id' => $bien_id, 
+        ]);
+    
+        return back();
     }
-    public function sauvegardecommentaire(Request $request){
-        Commentaire::create($request->all());
-        return redirect('/index');
-       ;
-    }
+    
     public function recuperercommentaire($id){
         $commentaires = Commentaire::find($id);
          return view('commentaires.recuperation',compact('commentaires'));
     }
 
-    public function modifiercommentaire(Request $request){
-       $commentaire = Commentaire::find($request->id);
+    public function modifiercommentaire(Request $request, $id){
+       $commentaire = Commentaire::find($id);
        $commentaire->update($request->all());
-       return redirect('/index');
+       return redirect('detailsBien/' . $commentaire->bien_id);
     }
+
     public function supprimercommentaire($id){
      $commentaire = Commentaire::find($id);
      $commentaire->delete();

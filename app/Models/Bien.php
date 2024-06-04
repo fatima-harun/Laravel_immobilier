@@ -29,7 +29,8 @@ class Bien extends Model
     }
    
 
-    public function commentaires():HasMany{
+    public function commentaires()
+    {
        return $this->hasMany(Commentaire::class);
     }
 

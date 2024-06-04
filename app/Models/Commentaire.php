@@ -16,7 +16,8 @@ class Commentaire extends Model
       'bien_id',
 
     ];
-    public function bien():BelongsTo{
+    public function bien()
+    {
         return $this->Belongsto(Bien::class);
     }
 }

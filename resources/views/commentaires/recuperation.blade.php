@@ -10,16 +10,23 @@
 <body>
     <div class="container mt-5">
         <h1 class="mb-4">Ajouter un Commentaire</h1>
-        <form action="/modifier" method="POST">
+        <form action="/modifier/{{ $commentaires->id }}" method="POST">
         @method('PATCH')
         @csrf
         <input type="hidden" class="form-control" name="id"  value="{{ $commentaires->id }}">
+        <div class="col-12">
             <div class="form-group">
-                <label for="content">Contenu du Commentaire</label>
-                <textarea class="form-control" id="content" name="contenu" rows="4" >{{$commentaires->contenu}}</textarea>
+                <input type="text" name="auteur" class="form-control" value="{{$commentaires->auteur}}">
             </div>
-            <button type="submit" class="btn btn-primary">Ajouter</button>
+            <div class="form-group">
+                <textarea name="contenu" class="form-control" >{{$commentaires->contenu}}</textarea>
+            </div>
+        </div>
+        <div class="submit text-left">
+            <button class="btn " style="background: black; color:white;">Modifier le commentaire</button>
+        </div>
         </form>
+        
     </div>
     <!-- Inclure le JS de Bootstrap et jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

@@ -36,10 +36,9 @@ Route::get("/detailsBien/{id}", [BienController::class, 'detailsBien']);
 
 
 Route::get('/index',[CommentaireController::class,'affichercommentaire']);
-Route::get('/formulaire',[CommentaireController::class,'ajoutcommentaire']);
-Route::post('/sauvegarde',[CommentaireController::class,'sauvegardecommentaire']);
+Route::post('/sauvegarde/{bien_id}',[CommentaireController::class,'sauvegardecommentaire']);
 Route::get('/recuperer/{id}',[CommentaireController::class,'recuperercommentaire']);
-Route::patch('/modifier',[CommentaireController::class,'modifiercommentaire']);
+Route::patch('/modifier/{id}',[CommentaireController::class,'modifiercommentaire']);
 Route::get('/supprimer/{id}',[CommentaireController::class,'supprimercommentaire']);
 
 Route::get('/categories/index', [CategorieController::class, 'listeCategorie']);
