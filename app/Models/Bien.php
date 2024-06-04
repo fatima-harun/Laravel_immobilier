@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Bien extends Model
 {
@@ -17,6 +18,7 @@ class Bien extends Model
         'adresse',
         'statut',
     ];
+
     public function categorie()
     {
         return $this->belongsTo(Categorie::class);
@@ -26,6 +28,11 @@ class Bien extends Model
         return $this->belongsTo(Personnel::class);
     }
    
+
+    public function commentaires():HasMany{
+       return $this->hasMany(Commentaire::class);
+    }
+
 }
 
 

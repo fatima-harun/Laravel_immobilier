@@ -5,8 +5,11 @@ use App\Http\Controllers\BienController;
 use App\Http\Controllers\CategorieController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentaireController;
+
 use App\Http\Controllers\PersonnelController;
 use App\Models\Categorie;
+
+
 
 /*
 |--------------------------------------------------------------------------
