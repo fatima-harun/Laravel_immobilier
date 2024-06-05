@@ -111,7 +111,7 @@ p{
 </style>
 <body>
     <div class="container mt-5">
-        <a href="/biens/index" class="btn btn-secondary">Retour</a>
+        <a href="{{ url()->previous() }}" class="btn btn-secondary">Retour</a>
         <h1 class="mb-4" style="text-align: center">Détails {{ $bien->nom }}</h1>
         <div class="details">
            <div class="image">
