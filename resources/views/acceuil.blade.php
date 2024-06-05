@@ -71,38 +71,47 @@
     </div>
   </div>
 </div>
-<h2>A propos</h2>
+<h2>Qui sommes-nous</h2>
+
 <div class="a_propos">
-    <div>
-        <p>À Listingplace, nous comprenons qu'acheter, vendre ou 
-            investir dans l'immobilier peut être une tâche intimidante.
-             C'est pourquoi nous nous engageons à fournir à nos clients des 
-             conseils et un soutien personnalisés et spécialisés tout au long du 
-             processus.Avec une équipe d'agents expérimentés et compétents, nous
-              avons une compréhension approfondie du marché immobilier local et 
-              pouvons vous aider à naviguer dans ses complexités avec facilité. 
-              Que vous soyez un primo-accédant à la propriété, un investisseur
-               chevronné ou à la recherche de votre propriété commerciale de rêve,
-                nous sommes là pour vous aider à atteindre vos objectifs immobiliers.</p>
-    </div>
-    <div>
-  <img src="{{ asset('https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') }}" alt="" style="width:400px;">
+   <div class="box">
+      <img src="{{ asset('https://cdn.pixabay.com/photo/2013/11/05/19/12/buildings-205986_640.jpg') }}" alt="" style="width:200px;">
+     <h4>Notre Vision</h4>
+     <p> Nous nous engageons à transformer vos rêves  
+        immobiliers en réalité en vous accompagnant à chaque étape de votre projet, que ce soit pour l'achat,   
+        la vente ou la gestion de biens immobiliers.</p>
+   </div>
+
+   <div class="box">
+      <img src="{{ asset('https://images.pexels.com/photos/1367272/pexels-photo-1367272.jpeg?auto=compress&cs=tinysrgb&w=600') }}" alt="" style="width:200px;">
+     <h4>Notre expertise</h4>
+     <p>Nous croyons en l'importance de la collaboration et de la diversité des compétences 
+      pour fournir des solutions  adaptées à vos besoins. Chaque membre de notre 
+      équipe partage la meme passion.</p>
+   </div>
+
+   <div class="box">
+      <img src="{{ asset('https://images.pexels.com/photos/5673488/pexels-photo-5673488.jpeg?auto=compress&cs=tinysrgb&w=600') }}" alt="" style="width:200px;">
+     <h4>Notre engagement</h4>
+     <p>Nous nous engageons à offrir un service transparent, honnête et respectueux. 
+      Notre priorité est de créer une relation de confiance avec nos clients en leur
+       fournissant des informations claires et précises.</p>
+   </div>
 </div>
+
+<h2>Nos partenaires</h2>
+<div class="partenaire">
+  <div><img src="{{ asset('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRha5SLf9nhXln6EhFB11bEtrcNQkwTYgEf9Q&s') }}" alt=""></div>
+  <div><img src="{{ asset('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRha5SLf9nhXln6EhFB11bEtrcNQkwTYgEf9Q&s') }}" alt=""></div>
+  <div><img src="{{ asset('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRha5SLf9nhXln6EhFB11bEtrcNQkwTYgEf9Q&s') }}" alt=""></div>
+  <div><img src="{{ asset('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRha5SLf9nhXln6EhFB11bEtrcNQkwTYgEf9Q&s') }}" alt=""></div>
+  <div><img src="{{ asset('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRha5SLf9nhXln6EhFB11bEtrcNQkwTYgEf9Q&s') }}" alt=""></div>
 </div>
-<h2>Découvrez nos biens</h2>
-<div>
-<!-- affichage des biens sous forme de carte  -->
-</div>
+
 <footer>
         <div><a class="navbar-brand" href="#"><img src="{{asset('images\Listingplace-removebg-preview.png')}}" alt="logo de l'entreprise" ></a></div>
         <div>
-            <h3>Contact</h3>
-            <p>Numéro de téléphone</p>
-            <p>Numéro de téléphone</p>
-        </div>
-        <div>
-            <h3>Newsletter</h3>
-            <input type="text" placeholder="Votre email">
+        <small>&copy; 2024 Simplon. Tous droits réservés.</small>
         </div>
 </footer>
 </body>

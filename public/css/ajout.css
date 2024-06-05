@@ -47,6 +47,15 @@ textarea{
 input{
     color:#b2bec3;
 }
+.carousel-iteme {
+    display: flex;
+    justify-content: center;
+  }
+  .carousel-iteme img {
+    width: 100px; /* Adjust as necessary */
+    height: auto;
+    margin: 0 10px;
+  }
 .btn-custom {
     background-color:#0e2442; /* Remplacez cette couleur par celle de votre choix */
     color: white;

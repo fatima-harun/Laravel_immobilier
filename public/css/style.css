@@ -11,7 +11,7 @@
 }
 .navbar-nav{
     font-family: Open sans;
-    font-size:19px;
+    font-size:15px;
     gap:50px;
 }
 .nav-link{
@@ -34,10 +34,17 @@
 .carousel-caption p{
  font-size: 4rem;
 }
-.a_propos{
+.a_propos {
     display:flex;
-    justify-content: center;
-    gap:25px;
+    justify-content: space-around;
+    text-align: center;
+}
+.a_propos img{
+    border-radius: 50px;
+    margin-bottom: 10px;
+}
+.box p{
+    width: 320px;
 }
 h2{
     text-align: center;
@@ -45,16 +52,17 @@ h2{
     margin-bottom: 55px;
     font-family: lato;
 }
-.a_propos p{
-    width: 600px;
-    line-height: 2;
+
+.partenaire{
+    display:flex;
+    justify-content: space-around;
 }
 footer{
     background-color:#0e2442 ;
     display:flex;
     color:white;
-    justify-content: space-around;
-    padding: 12px;
+    justify-content: space-between;
+    padding: 10px;
+    font-family: open sans;
 }
-
 
