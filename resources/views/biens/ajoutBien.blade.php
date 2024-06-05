@@ -9,42 +9,54 @@
 </head>
 
 <body>
-    <header class="custom-header-bg">
-
-    <nav class="navbar navbar-expand-lg ">
-        <div class="container-fluid mx-4">
-            <a class="navbar-brand" href="#"><img src="{{asset('images\Listingplace-removebg-preview.png')}}" alt="logo de l'entreprise" ></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-                <ul class="navbar-nav mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="#">Acceuil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">A propos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Nos biens</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="authentification ">
-                <a href=""><button>Se connecter</button></a>
-                <a href=""><button>S'inscrire</button></a>
-            </div>
+    <div class="sidebar">
+        <div class="logo">
+            <img src="{{asset('images/Listingplace-removebg-preview.png')}}" alt="Logo">
+            <h2>Bonjour {{session('personnel')->prenom}} </h2>
         </div>
-    </nav>
-    
-</header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/espacePersonnel">
+                        <div class="icon-text">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="white" d="M18 15h-2v2h2m0-6h-2v2h2m2 6h-8v-2h2v-2h-2v-2h2v-2h-2V9h8M10 7H8V5h2m0 6H8V9h2m0 6H8v-2h2m0 6H8v-2h2M6 7H4V5h2m0 6H4V9h2m0 6H4v-2h2m0 6H4v-2h2m6-10V3H2v18h20V7z"/></svg>
+                            <span>Biens</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="/categories/index">
+                        <div class="icon-text">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="white" d="M6.5 11L12 2l5.5 9zm11 11q-1.875 0-3.187-1.312T13 17.5t1.313-3.187T17.5 13t3.188 1.313T22 17.5t-1.312 3.188T17.5 22M3 21.5v-8h8v8zM17.5 20q1.05 0 1.775-.725T20 17.5t-.725-1.775T17.5 15t-1.775.725T15 17.5t.725 1.775T17.5 20M5 19.5h4v-4H5zM10.05 9h3.9L12 5.85zm7.45 8.5"/></svg>
+                            <span>Categories</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="/deconnexion">
+                        <div class="icon-text">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="white" d="m17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5M4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4z"/></svg>
+                            <span>Deconnexion</span>
+                            @if (session('status'))
+                                <div class="alert alert-success">
+                                    <a href="/deconnexion">{{session('status')}}</a>
+                                </div>
+                            @endif
+                        </div>
+
+                    </a>
+                </li>
+            </ul>
+            
+        </nav>
+    </div>
+    <div class="main-content">
+
 <div class="container mt-5">
+   <div class="bouton"> <a href="/espacePersonnel" class="btn" style="background: #0e2442; color:white; font-size:20px; border-raduis:5px;">Retour</a></div>
     <div class="row">
-        <div class="col-md-6">
-            <img src="https://cdn.pixabay.com/photo/2023/01/14/14/16/staircase-7718335_1280.jpg" class="img-fluid" alt="Image">
+        <div class="col-md-6 " style="margin-top: 50px;">
+            <img src="https://cdn.pixabay.com/photo/2023/01/14/14/16/staircase-7718335_1280.jpg" class="img-fluid" alt="Image" >
         </div>
         <div class="col-md-6">
             <h3 class="mb-4 text-center">Formulaire d'ajout d'un bien</h3>
@@ -101,6 +113,7 @@
         </div>
     </div>
 </div>
+    </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
@@ -108,3 +121,84 @@
 </body>
 
 </html>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: Roboto;
+    }
+    
+    .sidebar {
+        width: 250px;
+        height: 100vh;
+        background-color: #0e2442;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: fixed;
+        padding-top: 20px;
+    }
+    
+    .logo {
+        text-align: center;
+        padding: 10px 0;
+    }
+    
+    .logo img {
+        height: auto;
+        width: 100px;
+    }
+    
+    nav {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin-top: -70px;
+    }
+    
+    nav ul li {
+        padding: 10px 0;
+        text-align: center;
+    }
+    
+    nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-family: Open sans;
+        font-size:19px;
+        gap:50px;
+    }
+    
+    .icon-text {
+        display: flex;
+        align-items: center;
+        margin-left: 70px;
+    }
+    
+    .icon-text svg {
+        margin-right: 10px; /* Espace entre l'icône et le texte */
+    }
+    
+    
+    .main-content {
+        margin-left: 250px; 
+        padding: 20px;
+        flex-grow: 1;
+        background-color: #f4f4f4;
+        height: 100vh;
+        overflow: auto;
+    }
+   
+    </style>

@@ -52,7 +52,7 @@
 
     .btn {
         height: 50px;
-        font-size: 30px;
+        font-size: 25px;
         background: #0e2442;
         color: white;
         border-radius: 8px;

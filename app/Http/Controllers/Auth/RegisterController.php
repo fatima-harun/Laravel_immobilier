@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Personnel;
+use App\Models\Bien;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Support\Facades\Hash;
 
@@ -89,5 +90,10 @@ class RegisterController extends Controller
         $request->session()->forget('personnel');
         return redirect('/connexion')->with('status', 'Vous venez de vous déconnecter.');
     }
-
+    public function listeBien()
+    {
+        $biens = Bien::with('categorie')->get();
+        return view('personnels/espacePersonnel', compact('biens'));
+        
+    }
 }

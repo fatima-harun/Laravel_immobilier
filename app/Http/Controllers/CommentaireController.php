@@ -37,12 +37,12 @@ class CommentaireController extends Controller
     }
     
     public function recuperercommentaire($id){
-        $commentaires = Commentaire::find($id);
-         return view('commentaires.recuperation',compact('commentaires'));
+        $commentaire = Commentaire::find($id);
+        return view('commentaires.recuperation',compact('commentaire'));
     }
 
-    public function modifiercommentaire(Request $request, $id){
-       $commentaire = Commentaire::find($id);
+    public function modifiercommentaire(Request $request){
+       $commentaire = Commentaire::find($request->id);
        $commentaire->update($request->all());
        return redirect('detailsBien/' . $commentaire->bien_id);
     }

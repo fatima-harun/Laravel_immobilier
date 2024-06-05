@@ -5,29 +5,6 @@
  --police-paragraphe:'Open sans'
 }
 
-.navbar-brand img{
-    height: auto;
-    width: 50px;
-}
-.navbar-nav{
-    font-family: Open sans;
-    font-size:15px;
-    gap:40px;
-}
-.nav-link{
-    color:white
-}
-.authentification button {
-    background-color:transparent;
-    color: white;
-    border-color: white;
-    border-radius: 20px;
-    border-width: thin;
-}
-.custom-header-bg{
-    background-color: #0e2442;
-}
-
 .first_input{
     display:flex;
     justify-content: space-around;
@@ -35,25 +12,35 @@
 .form{
     display:flex
 }
-input{
-    margin-bottom: 35px;
+
+.form-control,.select-option{
+    padding: 22px;
+    border-radius: 8px;
 }
-select{
-    margin-bottom:35px
+.form-control::placeholder {
+    color: #6c757d; 
+    
 }
-textarea{
-    margin-bottom: 12px;
-}
-input{
-    color:#b2bec3;
-}
+
 .btn-custom {
-    background-color:#0e2442; /* Remplacez cette couleur par celle de votre choix */
-    color: white;
     border: none;
     width: 100%;
+    height: 50px;
+    font-size: 25px;
+    background: #0e2442;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.btn-custom:hover {
+    background: white;
+    color: #0e2442;
 }
 .img-fluid{
     height: 90vh;
+    border-radius: 10px;
+    
 }
+
 

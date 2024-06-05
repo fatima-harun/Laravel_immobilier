@@ -13,7 +13,9 @@ class BienController extends Controller
     {
         $biens = Bien::with('categorie')->get();
         return view('biens.index', compact('biens'));
+        
     }
+   
     public function ajoutBien()
     {
         $categories = Categorie::all();
@@ -45,7 +47,7 @@ class BienController extends Controller
             'statut.in' => 'Le statut du bien doit être soit libre soit occupé.',
         ]);        
         Bien::create($request->all());
-        return redirect("/biens/index");
+        return redirect("/espacePersonnel");
     }
     public function modifierBien($id)
     {
@@ -80,7 +82,7 @@ class BienController extends Controller
         ]);
         $bien = Bien::find($request->id);
         $bien->update($request->all());
-        return redirect("/biens/index");
+        return redirect("/espacePersonnel");
     }
 
     public function detailsBien($id)
