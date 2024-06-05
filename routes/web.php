@@ -24,8 +24,10 @@ use App\Models\Categorie;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('acceuil');
 });
+
+//routes des biens
 Route::get("biens/index" ,[BienController::class, 'listeBien']);
 Route::get("/ajoutBien", [BienController::class, 'ajoutBien']);
 Route::post('/sauvegardeBien',[BienController::class, 'sauvegardeBien']);
@@ -34,7 +36,7 @@ Route::get('/modifierBien/{bien}', [BienController::class, 'modifierBien']);
 Route::post('/sauvegardeMofication', [BienController::class, 'sauvegardeMofication']);
 Route::get("/detailsBien/{id}", [BienController::class, 'detailsBien']);
 
-
+//routes des commentaires
 Route::get('/index',[CommentaireController::class,'affichercommentaire']);
 Route::get('/formulaire',[CommentaireController::class,'ajoutcommentaire']);
 Route::post('/sauvegarde',[CommentaireController::class,'sauvegardecommentaire']);
@@ -42,12 +44,15 @@ Route::get('/recuperer/{id}',[CommentaireController::class,'recuperercommentaire
 Route::patch('/modifier',[CommentaireController::class,'modifiercommentaire']);
 Route::get('/supprimer/{id}',[CommentaireController::class,'supprimercommentaire']);
 
+//routes des categories
 Route::get('/categories/index', [CategorieController::class, 'listeCategorie']);
 Route::post('/sauvegardeCategorie', [CategorieController::class, 'sauvegardeCategorie'] );
 Route::get("/modifierCategorie/{id}", [CategorieController::class, 'modifierCategorie']);
 Route::post('/sauvegardeMoficationCategorie', [CategorieController::class,'sauvegardeMoficationCategorie']);
 Route::get("/supprimerCategorie/{id}", [CategorieController::class, 'supprimerCategorie']);
 
+//routes pour l'authentification et l'inscription
 Route::get('/inscription', [RegisterController::class, 'ajoutPersonnel']);
 Route::post('/sauvegardePersonnel', [RegisterController::class, 'sauvegardePersonnel']);
+
 
