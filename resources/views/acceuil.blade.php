@@ -37,10 +37,6 @@
                     </li>
                 </ul>
             </div>
-            <div class="authentification ">
-                <a href=""><button>Se connecter</button></a>
-                <a href=""><button>S'inscrire</button></a>
-            </div>
         </div>
     </nav>
     
