@@ -52,6 +52,21 @@
             display: flex;
             justify-content: space-between;
         }
+        .btn-custom {
+    border: none;
+    width: 20%;
+    height: 50px;
+    font-size: 25px;
+    background: #0e2442;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.btn-custom:hover {
+    background: white;
+    color: #0e2442;
+}
 </style>
 <body>
 <header class="custom-header-bg">
@@ -65,7 +80,7 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="#">Acceuil</a>
+                        <a class="nav-link " aria-current="page" href="#">Accueil</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">A propos</a>
@@ -131,6 +146,7 @@
           </div>
       </div>
   @endforeach
+  <a href="/biens/index" style="text-align: right" > <button class="btn-custom ">Voir Plus </button><i class="fas fa-row"></i> </a>
 </div>
 <h1 style="text-align: center; margin:30px 0;">Qui sommes-nous</h1>
 
