@@ -1,49 +1,82 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Ajouter un Bien</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+
 <body>
     <div class="container mt-5">
         <h1 class="mb-4">Ajouter un Bien</h1>
         <form action="/sauvegardeBien" method="POST" enctype="multipart/form-data">
             @csrf
+
+            <!-- Sélection du personnel -->
             <div class="form-group">
                 <label for="personnel_id">Personnel</label>
-                <select class="form-control" id="personnel_id" name="personnel_id" required>
+                <select class="form-control" id="personnel_id" name="personnel_id">
                     <option value="" disabled selected>Choisir un personnel</option>
-                    @foreach($personnel as $p)
+                    @foreach ($personnel as $p)
                         <option value="{{ $p->id }}">{{ $p->nom }} {{ $p->prenom }}</option>
                     @endforeach
                 </select>
+                @error('personnel_id')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
-            
+
+            <!-- Sélection de la catégorie -->
             <div class="form-group">
                 <label for="categorie_id">Catégorie</label>
-                <select class="form-control" id="categorie_id" name="categorie_id" required>
+                <select class="form-control" id="categorie_id" name="categorie_id">
                     <option value="" disabled selected>Choisir une catégorie</option>
-                    @foreach($categories as $categorie)
+                    @foreach ($categories as $categorie)
                         <option value="{{ $categorie->id }}">{{ $categorie->nom }}</option>
                     @endforeach
                 </select>
+                @error('categorie_id')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
+
+            <!-- Nom du bien -->
             <div class="form-group">
                 <label for="nom">Nom</label>
-                <input type="text" class="form-control" id="nom" name="nom" required>
+                <input type="text" class="form-control" id="nom" name="nom">
+                @error('nom')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
+
+            <!-- Image du bien -->
             <div class="form-group">
                 <label for="image">Image</label>
-                <input type="text" class="form-control" id="image" name="image" required>
+                <input type="text" class="form-control" id="image" name="image">
+                @error('image')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
+
+            <!-- Description du bien -->
             <div class="form-group">
                 <label for="description">Description</label>
-                <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+                <textarea class="form-control" id="description" name="description" rows="4"></textarea>
+                @error('description')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
+
+            <!-- Adresse du bien -->
             <div class="form-group">
                 <label for="adresse">Adresse</label>
-                <input type="text" class="form-control" id="adresse" name="adresse" required>
+                <input type="text" class="form-control" id="adresse" name="adresse">
+                @error('adresse')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
+
+            <!-- Statut du bien -->
             <div class="form-group">
                 <label>Statut</label><br>
                 <div class="form-check form-check-inline">
@@ -55,11 +88,14 @@
                     <label class="form-check-label" for="occupe">Occupé</label>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Ajouter</button>
+
+            <!-- Bouton de soumission -->
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
         </form>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

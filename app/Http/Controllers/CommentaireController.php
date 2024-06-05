@@ -18,6 +18,15 @@ class CommentaireController extends Controller
    
     public function sauvegardecommentaire(Request $request, $bien_id){
         $bien = Bien::find($bien_id);
+
+        $request->validate([
+            'auteur' => 'required|max:50',
+            'contenu' => 'required',
+        ], [
+            'auteur.required' => 'Le champ auteur est requis.',
+            'auteur.max' => 'Le champ auteur ne peut pas dépasser 50 caractères.',
+            'contenu.required' => 'Le champ contenu est requis.',
+        ]);
         Commentaire::create([
             'auteur' => $request->input('auteur'),
             'contenu' => $request->input('contenu'),

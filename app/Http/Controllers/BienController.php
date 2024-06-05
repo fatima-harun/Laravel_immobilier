@@ -22,6 +22,28 @@ class BienController extends Controller
     }
     public function sauvegardeBien(Request $request)
     {
+        $request->validate([
+            'personnel_id' => 'required|exists:personnels,id',
+            'categorie_id' => 'required|exists:categories,id',
+            'nom' => 'required',
+            'image' => 'required|url',
+            'description' => 'required',
+            'adresse' => 'required',
+            'statut' => 'required|in:0,1',
+        ],
+        [
+            'personnel_id.required' => 'Veuillez choisir un personnel.',
+            'personnel_id.exists' => 'Le personnel sélectionné n\'existe pas.',
+            'categorie_id.required' => 'Veuillez choisir une catégorie.',
+            'categorie_id.exists' => 'La catégorie sélectionnée n\'existe pas.',
+            'nom.required' => 'Veuillez entrer le nom du bien.',
+            'image.required' => 'Veuillez entrer l\'URL de l\'image.',
+            'image.url' => 'L\'URL de l\'image doit être une URL valide.',
+            'description.required' => 'Veuillez entrer une description du bien.',
+            'adresse.required' => 'Veuillez entrer l\'adresse du bien.',
+            'statut.required' => 'Veuillez choisir le statut du bien.',
+            'statut.in' => 'Le statut du bien doit être soit libre soit occupé.',
+        ]);        
         Bien::create($request->all());
         return redirect("/biens/index");
     }
@@ -29,10 +51,33 @@ class BienController extends Controller
     {
         $bien = Bien::find($id);
         $categories = Categorie::all();
-        return view('biens.modificationBien', compact('bien', 'categories'));
+        $personnel = Personnel::all();
+        return view('biens.modificationBien', compact('bien', 'categories','personnel'));
     }
     public function sauvegardeMofication(Request $request)
     {
+        $request->validate([
+            'personnel_id' => 'required|exists:personnels,id',
+            'categorie_id' => 'required|exists:categories,id',
+            'nom' => 'required',
+            'image' => 'required|url',
+            'description' => 'required',
+            'adresse' => 'required',
+            'statut' => 'required|in:0,1',
+        ],
+        [
+            'personnel_id.required' => 'Veuillez choisir un personnel.',
+            'personnel_id.exists' => 'Le personnel sélectionné n\'existe pas.',
+            'categorie_id.required' => 'Veuillez choisir une catégorie.',
+            'categorie_id.exists' => 'La catégorie sélectionnée n\'existe pas.',
+            'nom.required' => 'Veuillez entrer le nom du bien.',
+            'image.required' => 'Veuillez entrer l\'URL de l\'image.',
+            'image.url' => 'L\'URL de l\'image doit être une URL valide.',
+            'description.required' => 'Veuillez entrer une description du bien.',
+            'adresse.required' => 'Veuillez entrer l\'adresse du bien.',
+            'statut.required' => 'Veuillez choisir le statut du bien.',
+            'statut.in' => 'Le statut du bien doit être soit libre soit occupé.',
+        ]);
         $bien = Bien::find($request->id);
         $bien->update($request->all());
         return redirect("/biens/index");

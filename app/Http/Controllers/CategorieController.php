@@ -15,6 +15,13 @@ class CategorieController extends Controller
     
     public function sauvegardeCategorie(Request $request)
     {
+        $request->validate([
+            'nom' => 'required|max:50',
+        ], [
+            'nom.required' => 'Le champ nom est requis.',
+            'nom.max' => 'Le champ nom ne peut pas dépasser 50 caractères.',
+        ]);
+        
         Categorie::create($request->all());
         return back();
     }
@@ -26,6 +33,12 @@ class CategorieController extends Controller
     }
     public function sauvegardeMoficationCategorie(Request $request)
     {
+        $request->validate([
+            'nom' => 'required|max:50',
+        ], [
+            'nom.required' => 'Le champ nom est requis.',
+            'nom.max' => 'Le champ nom ne peut pas dépasser 50 caractères.',
+        ]);
         $categorie=Categorie::find($request->id);
         $categorie->update($request->all());
         return redirect("/categories/index");

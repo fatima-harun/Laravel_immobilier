@@ -16,18 +16,39 @@ class RegisterController extends Controller
         }
         return view('/personnels/inscription');
     }
+
+
+
     public function sauvegardePersonnel(Request $request)
 
-    {   // Extraire toutes les données du formulaire
+    {   
+        $request->validate([
+            'nom' => 'required',
+            'prenom' => 'required',
+            'email' => 'required|email|unique:personnels,email',
+            'mot_de_passe' => 'required|min:8',
+            'telephone' => 'required|digits:9',
+        ],
+        [
+            'nom.required' => 'Veuillez entrer votre nom.',
+            'prenom.required' => 'Veuillez entrer votre prénom.',
+            'email.required' => 'Veuillez entrer votre adresse email.',
+            'email.email' => 'Veuillez entrer une adresse email valide.',
+            'email.unique' => 'Cette adresse email est déjà utilisée.',
+            'mot_de_passe.required' => 'Veuillez entrer votre mot de passe.',
+            'mot_de_passe.min' => 'Votre mot de passe doit comporter au moins 8 caractères.',
+            'telephone.required' => 'Veuillez entrer votre numéro de téléphone.',
+            'telephone.digits' => 'Le numéro de téléphone doit comporter exactement 9 chiffres.',
+        ]);
+        
         $data = $request->all();
-    
-        // Hasher le mot de passe avant de sauvegarder
         $data['mot_de_passe'] = bcrypt($request->input('mot_de_passe'));
-    
-        // Créer un nouvel enregistrement dans la base de données avec les données modifiées
         Personnel::create($data);
         return view('personnels/connexion');
     }
+
+
+
     public function connexion(Request $request)
     {
         if ($request->session()->get('personnel')) {
@@ -35,29 +56,34 @@ class RegisterController extends Controller
         }
         return view('personnels/connexion');
     }
-    // Cette méthode de contrôleur traite la demande de connexion d'un utilisateur.
+    
+    
+
     public function traitementConnexion(Request $request)
     {
-        // Récupération des données de la demande à partir du formulaire de connexion via l'objet $request.
+        $request ->validate([
+            'email' => 'required|email',
+            'mot_de_passe' => 'required',
+        ],
+        [
+            'email.required' => 'Veuillez entrer votre adresse email.',
+            'email.email' => 'Veuillez entrer une adresse email valide.',
+            'mot_de_passe.required' => 'Veuillez entrer votre mot de passe.',
+        ]);
         $personnel = Personnel::where('email', $request->input('email'))->first();
-
-        // Vérifie si l'utilisateur est trouvé dans la base de données.
         if($personnel){
-            // Vérification si le mot de passe fourni correspond au mot de passe haché stocké dans la base de données.
             if (Hash::check($request->input('mot_de_passe'), $personnel->mot_de_passe)) {
-                // Si l'authentification est réussie, les données de l'utilisateur sont placées dans la session avec la clé personnel.
                 $request->session()->put('personnel', $personnel);
-                // L'utilisateur est redirigé vers une page, généralement la page d'accueil ou une page protégée réservée aux utilisateurs connectés.
                 return redirect('/espacePersonnel');
             } else {
-                // Si le mot de passe ne correspond pas, un message d'erreur est renvoyé et l'utilisateur est redirigé vers la page précédente.
-                return back()->with('status', 'Identifiant ou mot de passe incorrect.');
+                return back()->with('status', ' mot de passe incorrect.');
             }
         } else {
-            // Si l'email n'est pas trouvé dans la base de données, un message d'erreur est renvoyé et l'utilisateur est redirigé vers la page précédente.
             return back()->with('status', 'Désolé, vous n\'avez pas de compte avec cet email.');
         }
     }
+
+
     public function deconnexion(Request $request)
     {
         $request->session()->forget('personnel');
