@@ -82,6 +82,7 @@ class BienController extends Controller
         $bien->update($request->all());
         return redirect("/biens/index");
     }
+
     public function detailsBien($id)
     {
         $bien = Bien::find($id);
@@ -89,6 +90,7 @@ class BienController extends Controller
     }
 
     public function supprimerBien($id)
+
     {
         $bien = Bien::find($id);
         $bien->delete();  
