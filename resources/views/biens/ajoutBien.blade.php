@@ -69,7 +69,7 @@
             <h3 class="mb-4 text-center">Formulaire d'ajout d'un bien</h3>
             <form action="/sauvegardeBien" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <select class="form-control" id="personnel_id" name="personnel_id">
                         <option value="" disabled selected>Choisir un personnel</option>
                         @foreach($personnel as $p)
@@ -79,8 +79,15 @@
                     @error('personnel_id')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
+                </div> --}}
+                <div class="form-group">
+                    <label for="personnel">Personnel</label>
+                    <input type="text" class="form-control" id="personnel" name="personnel" value="{{ $personnel->nom }} {{ $personnel->prenom }}" readonly>
+                    <input type="hidden" name="personnel_id" value="{{ $personnel->id }}">
+                    @error('personnel_id')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
-            
                 <div class="form-group">
                     <select class="form-control" id="categorie_id" name="categorie_id">
                         <option value="" disabled selected>Choisir une catégorie</option>

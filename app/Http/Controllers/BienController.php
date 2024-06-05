@@ -25,7 +25,7 @@ class BienController extends Controller
     public function ajoutBien()
     {
         $categories = Categorie::all();
-        $personnel = Personnel::all(); // Supposons que vous avez un modèle Personnel pour le personnel
+        $personnel = session('personnel'); // Récupérer les informations de l'utilisateur connecté depuis la session
         return view('biens.ajoutBien', compact('categories', 'personnel'));
     }
     public function sauvegardeBien(Request $request)

@@ -70,16 +70,14 @@
                     @foreach ($biens as $bien)
                         <div class="col-md-4 d-flex align-items-stretch">
                             <div class="card" >
-                                <img src="{{ $bien->image }}" class="card-img-top" alt="{{ $bien->nom }}">
+                                <img src="{{ $bien->image }}" class="card-img-top" alt="{{ $bien->nom }}"style="height: 300px">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $bien->nom }}</h5>
                                     <p class="card-text">{{ Str::limit($bien->description, 100) }}</p>
                                     <div class="detail">
                                         <p>{{ $bien->adresse }}</p>
-                                        <p>{{ $bien->categorie->nom }}</p>
+                                        <p>{{ $bien->statut ? 'Occupé' : 'Libre' }}</p>
                                     </div>
-                                    <p>{{ $bien->statut ? 'Occupé' : 'Libre' }}</p>
-                                    <p>{{ $bien->created_at }}</p>
             
                                     <div class="d-flex justify-content-between">
                                         <a href="/detailsBien/{{ $bien->id }}" class="btn btn-info btn-sm"><i class="fas fa-eye"></i> </a>
