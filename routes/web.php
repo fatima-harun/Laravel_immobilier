@@ -24,11 +24,12 @@ use App\Models\Categorie;
 
 
 Route::get('/', function () {
-    return view('acceuil');
+    return view('accueil');
 });
 
 //routes des biens
 Route::get("biens/index" ,[BienController::class, 'listeBien']);
+Route::get("/" ,[BienController::class, 'accueil']);
 // Route::get("/ajoutBien", [BienController::class, 'ajoutBien']);
 // Route::post('/sauvegardeBien',[BienController::class, 'sauvegardeBien']);
 // Route::get('/supprimerBien/{bien}', [BienController::class, 'supprimerBien']);

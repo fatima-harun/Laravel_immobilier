@@ -25,6 +25,14 @@
                     </a>
                 </li>
                 <li>
+                    <a href="/ajoutBien">
+                        <div class="icon-text">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 20 20"><path fill="white" d="M11 9h4v2h-4v4H9v-4H5V9h4V5h2zm-1 11a10 10 0 1 1 0-20a10 10 0 0 1 0 20m0-2a8 8 0 1 0 0-16a8 8 0 0 0 0 16"/></svg>
+                            <span>Ajouter</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
                     <a href="/categories/index">
                         <div class="icon-text">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="white" d="M6.5 11L12 2l5.5 9zm11 11q-1.875 0-3.187-1.312T13 17.5t1.313-3.187T17.5 13t3.188 1.313T22 17.5t-1.312 3.188T17.5 22M3 21.5v-8h8v8zM17.5 20q1.05 0 1.775-.725T20 17.5t-.725-1.775T17.5 15t-1.775.725T15 17.5t.725 1.775T17.5 20M5 19.5h4v-4H5zM10.05 9h3.9L12 5.85zm7.45 8.5"/></svg>
@@ -53,7 +61,6 @@
     <div class="main-content">
 
 <div class="container mt-5">
-   <div class="bouton"> <a href="/espacePersonnel" class="btn" style="background: #0e2442; color:white; font-size:20px; border-raduis:5px;">Retour</a></div>
     <div class="row">
         <div class="col-md-6 " style="margin-top: 50px;">
             <img src="https://cdn.pixabay.com/photo/2023/01/14/14/16/staircase-7718335_1280.jpg" class="img-fluid" alt="Image" >
@@ -63,38 +70,55 @@
             <form action="/sauvegardeBien" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <select class="form-control" id="personnel_id" name="personnel_id" required>
+                    <select class="form-control" id="personnel_id" name="personnel_id">
                         <option value="" disabled selected>Choisir un personnel</option>
                         @foreach($personnel as $p)
                             <option value="{{ $p->id }}">{{ $p->nom }} {{ $p->prenom }}</option>
                         @endforeach
                     </select>
+                    @error('personnel_id')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
-                
+            
                 <div class="form-group">
-                    <select class="form-control" id="categorie_id" name="categorie_id" required>
+                    <select class="form-control" id="categorie_id" name="categorie_id">
                         <option value="" disabled selected>Choisir une catégorie</option>
                         @foreach($categories as $categorie)
                             <option value="{{ $categorie->id }}">{{ $categorie->nom }}</option>
                         @endforeach
                     </select>
-                </div>
-
-                
-                <div class="form-group">
-                    <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom du bien" required>
+                    @error('categorie_id')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 
                 <div class="form-group">
-                    <input type="text" class="form-control" id="image" name="image" placeholder="URL de l'image" required>
+                    <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom du bien">
+                    @error('nom')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 
                 <div class="form-group">
-                    <textarea class="form-control" id="description" name="description" rows="4" placeholder="Description du bien" required></textarea>
+                    <input type="text" class="form-control" id="image" name="image" placeholder="URL de l'image">
+                    @error('image')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 
                 <div class="form-group">
-                    <input type="text" class="form-control" id="adresse" name="adresse" placeholder="Adresse du bien" required>
+                    <textarea class="form-control" id="description" name="description" rows="4" placeholder="Description du bien"></textarea>
+                    @error('description')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                
+                <div class="form-group">
+                    <input type="text" class="form-control" id="adresse" name="adresse" placeholder="Adresse du bien">
+                    @error('adresse')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 
                 <div class="form-group text-center">
@@ -106,6 +130,9 @@
                         <input class="form-check-input" type="radio" name="statut" id="occupe" value="1">
                         <label class="form-check-label" for="occupe">Occupé</label>
                     </div>
+                    @error('statut')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 
                 <button type="submit" class="btn-custom">Ajouter</button>

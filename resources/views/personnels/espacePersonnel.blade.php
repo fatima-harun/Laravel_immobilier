@@ -27,6 +27,14 @@
                     </a>
                 </li>
                 <li>
+                    <a href="/ajoutBien">
+                        <div class="icon-text">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 20 20"><path fill="white" d="M11 9h4v2h-4v4H9v-4H5V9h4V5h2zm-1 11a10 10 0 1 1 0-20a10 10 0 0 1 0 20m0-2a8 8 0 1 0 0-16a8 8 0 0 0 0 16"/></svg>
+                            <span>Ajouter</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
                     <a href="/categories/index">
                         <div class="icon-text">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="white" d="M6.5 11L12 2l5.5 9zm11 11q-1.875 0-3.187-1.312T13 17.5t1.313-3.187T17.5 13t3.188 1.313T22 17.5t-1.312 3.188T17.5 22M3 21.5v-8h8v8zM17.5 20q1.05 0 1.775-.725T20 17.5t-.725-1.775T17.5 15t-1.775.725T15 17.5t.725 1.775T17.5 20M5 19.5h4v-4H5zM10.05 9h3.9L12 5.85zm7.45 8.5"/></svg>
@@ -56,38 +64,39 @@
         <div class="grand_titre">
             <h1 >Liste des biens</h1>
             </div>
-            <div class="container mt-5">
-                <div class="bouton"><a href="/ajoutBien" class="btn mb-3" style="background: #0e2442; color:white; font-size:20px; border-raduis:5px;">Ajouter un bien</a></div>
+            <div class="container mt-3">
+                {{-- <div class="bouton"><a href="/ajoutBien" class="btn mb-3" style="background: #0e2442; color:white; font-size:20px; border-raduis:5px;">Ajouter un bien</a></div> --}}
                 <div class="row justify-content-around">
                     @foreach ($biens as $bien)
                         <div class="col-md-4 d-flex align-items-stretch">
-                            <div class="card" style="width: 18rem;">
+                            <div class="card" >
                                 <img src="{{ $bien->image }}" class="card-img-top" alt="{{ $bien->nom }}">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $bien->nom }}</h5>
                                     <p class="card-text">{{ Str::limit($bien->description, 100) }}</p>
-                                    <div class='detail'>
-                                    <div><p>{{ $bien->adresse }}</p></div>
-                                    <div><p>{{ $bien->categorie->nom }}</p></div> 
+                                    <div class="detail">
+                                        <p>{{ $bien->adresse }}</p>
+                                        <p>{{ $bien->categorie->nom }}</p>
                                     </div>
                                     <p>{{ $bien->statut ? 'Occupé' : 'Libre' }}</p>
                                     <p>{{ $bien->created_at }}</p>
-                                    <a href="/detailsBien/{{ $bien->id }}" class="btn btn-info btn-sm">
-                                        <i class="fas fa-eye"></i> <!-- Utilisez la classe d'icône pour l'œil -->
-                                    </a>
-                                    <a href="/modifierBien/{{ $bien->id }}" class="btn btn-primary btn-sm">
-                                        <i class="fas fa-edit"></i> <!-- Utilisez la classe d'icône pour l'édition -->
-                                    </a>
-                                    <a href="/supprimerBien/{{ $bien->id }}" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ?')">
-                                        <i class="fas fa-trash-alt"></i> <!-- Utilisez la classe d'icône pour la suppression -->
-                                    </a>
-                                    
+            
+                                    <div class="d-flex justify-content-between">
+                                        <a href="/detailsBien/{{ $bien->id }}" class="btn btn-info btn-sm"><i class="fas fa-eye"></i> </a>
+                                        <a href="/modifierBien/{{ $bien->id }}" class="btn btn-primary btn-sm">
+                                            <i class="fas fa-edit"></i> <!-- Utilisez la classe d'icône pour l'édition -->
+                                        </a>
+                                        <a href="/supprimerBien/{{ $bien->id }}" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ?')">
+                                            <i class="fas fa-trash-alt"></i> <!-- Utilisez la classe d'icône pour la suppression -->
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     @endforeach
                 </div>
             </div>
+            
     </div>
 </body>
 </html>
@@ -178,11 +187,79 @@ nav ul li a {
     margin-bottom: 20px;
     margin: 30px;
     text-align: center;
-    color: #0e2442;
+    color: white;
     font-weight: bold;
 }
 .bouton{
     display: flex;
     justify-content: right;
 }
+        .grand_titre{
+            color: white;
+            text-align: center;
+            background-image: linear-gradient(rgba(1, 1, 15, 0.322), rgba(6, 6, 44, 0.582)), url("{{ asset('images/back.png') }}");
+            background-size: cover;
+            background-position: center;
+        }
+        .grand_titre h1{
+            padding-bottom: 150px;
+            padding-top: 150px;
+            font-family: lato;
+        }
+        .card {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            /* margin-bottom: 20px; */
+            /* height: 100%; */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom:12px;
+        }
+        .card:hover {
+            z-index: 10;
+            transform: scale(1.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+       
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            max-height: 350px; /* Ajustez cette valeur pour réduire la hauteur */
+            overflow: hidden;
+            background-color:#0e2442;
+            color:white
+        }
+        .card .detail {
+            display: flex;
+            justify-content: space-between;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+        :root {
+            --police-titre: 'Lato';
+            --police-paragraphe: 'Open sans';
+        }
+        .navbar-brand img {
+            height: auto;
+            width: 50px;
+        }
+        .navbar-nav {
+            font-family: Open sans;
+            font-size: 19px;
+            gap: 50px;
+        }
+        .nav-link {
+            color: white;
+        }
+        .authentification button {
+            background-color: transparent;
+            color: white;
+            border-color: white;
+            border-radius: 20px;
+        }
+        .custom-header-bg {
+            background-color: #0e2442;
+        }
+    
 </style>

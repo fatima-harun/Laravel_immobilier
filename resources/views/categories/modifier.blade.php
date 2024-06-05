@@ -1,42 +1,4 @@
-{{-- <!DOCTYPE html>
-<html>
 
-<head>
-    <title>Catégories</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-</head>
-
-<body>
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <h2>Ajouter une nouvelle Catégorie</h2>
-
-                @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                @endif
-
-                <form action="/sauvegardeMoficationCategorie" method="POST">
-                    @csrf
-                    <input type="text" name="id" style="display: none" value="{{ $categorie->id }}">
-                    <div class="form-group">
-                        <input type="text" name="nom" class="form-control" id="nom"
-                            value="{{ $categorie->nom }}">
-                        @error('nom')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <button type="submit" class="btn btn-primary">Ajouter une Catégorie</button>
-                </form>
-
-            </div>
-        </div>
-    </div>
-</body>
-
-</html> --}}
  
 <!DOCTYPE html>
 <html lang="fr">
@@ -62,6 +24,14 @@
                         <div class="icon-text">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="white" d="M18 15h-2v2h2m0-6h-2v2h2m2 6h-8v-2h2v-2h-2v-2h2v-2h-2V9h8M10 7H8V5h2m0 6H8V9h2m0 6H8v-2h2m0 6H8v-2h2M6 7H4V5h2m0 6H4V9h2m0 6H4v-2h2m0 6H4v-2h2m6-10V3H2v18h20V7z"/></svg>
                             <span>Biens</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ajoutBien">
+                        <div class="icon-text">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 20 20"><path fill="white" d="M11 9h4v2h-4v4H9v-4H5V9h4V5h2zm-1 11a10 10 0 1 1 0-20a10 10 0 0 1 0 20m0-2a8 8 0 1 0 0-16a8 8 0 0 0 0 16"/></svg>
+                            <span>Ajouter</span>
                         </div>
                     </a>
                 </li>

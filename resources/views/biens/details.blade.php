@@ -1,11 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Détails du Bien</title>
+    <meta charset="UTF-8">
+    <title>Liste des Biens</title>
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-</head>
-<style>
+    <style>
+       
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+        :root {
+            --police-titre: 'Lato';
+            --police-paragraphe: 'Open sans';
+        }
+        .navbar-brand img {
+            height: auto;
+            width: 50px;
+        }
+        .navbar-nav {
+            font-family: Open sans;
+            font-size: 19px;
+            gap: 50px;
+        }
+        .nav-link {
+            color: white;
+        }
+        
+        .custom-header-bg {
+            background-color: #0e2442;
+        }
     body{
         font-family: Roboto;
     }
@@ -28,14 +51,14 @@
 }
 h2{
     font-size: 30px;
-    color:#43413d;
+    color:#0e2442;
     font-weight: 700;
     text-align: center;
     margin-bottom: 30px;
 }
 span{
     font-size: 20px;
-    color:#43413d;
+    color:#0e2442;
     font-weight: 700;
 }
 p{
@@ -110,9 +133,37 @@ p{
 
 </style>
 <body>
+    <header class="custom-header-bg">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid mx-4">
+                <a class="navbar-brand" href="#"><img src="{{ asset('images/Listingplace-removebg-preview.png') }}" alt="logo de l'entreprise"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">A propos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Nos biens</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+    
+        </nav>
+    </header>
+    
     <div class="container mt-5">
-        <a href="{{ url()->previous() }}" class="btn btn-secondary">Retour</a>
-        <h1 class="mb-4" style="text-align: center">Détails {{ $bien->nom }}</h1>
+        <h1 class="mb-4" style="text-align: center; color:#0e2442;">Détails {{ $bien->nom }}</h1>
         <div class="details">
            <div class="image">
             <img src="{{ $bien->image }}" alt="{{ $bien->nom }}" style="width: 800px; border-radius: 8px;">
@@ -229,7 +280,15 @@ p{
         </form>
         </div>
 
+    <a href="{{ url()->previous() }}" class="btn "style="background: #0e2442; color:white; margin-bottom:20px;" >Retour</a>
+    
     </div>
+    <footer style="display: flex; justify-content:space-between; align-items:center;">
+        <div><a class="navbar-brand" href="#"><img src="{{asset('images\Listingplace-removebg-preview.png')}}" alt="logo de l'entreprise" ></a></div>
+        <div>
+        <small>&copy; 2024 Simplon. Tous droits réservés.</small>
+        </div>
+</footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

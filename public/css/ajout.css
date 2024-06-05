@@ -22,6 +22,15 @@
     
 }
 
+.carousel-iteme {
+    display: flex;
+    justify-content: center;
+  }
+  .carousel-iteme img {
+    width: 100px; /* Adjust as necessary */
+    height: auto;
+    margin: 0 10px;
+  }
 .btn-custom {
     border: none;
     width: 100%;
