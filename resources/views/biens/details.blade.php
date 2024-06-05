@@ -97,6 +97,7 @@ p{
     }
     .form-control{
         padding: 30px;
+        border-radius: 8px;
     }
     .commentaire,hr{
         width: 80%;
@@ -178,7 +179,6 @@ p{
         <div class="commentaire">
             @php
             $nbrCommentaire = $bien->commentaires()->count();
-            $commentaires = $bien->commentaires()->paginate(2);
             @endphp
 
             <h3 class="side-title"><i class="fas fa-comments"> </i> Commentaires ({{ $nbrCommentaire }})</h3>
@@ -206,8 +206,8 @@ p{
                         </div>
                     </div>
                 </div>
-                {{ $commentaires->links() }}
             @endforeach
+            {{-- {{ $bien->commentaires->links() }} --}}
         @endif
         <h4 class="side-title mb-2">Laisser un commentaire</h4>
         <form action="/sauvegarde/{{ $bien->id }}" method="POST">
@@ -222,9 +222,10 @@ p{
                     </div>
                 </div>
             </div>
-            <div class="submit text-left">
-                <button class="btn " style="background: black; color:white;">Poster un commentaire</button>
+            <div class="submit ">
+                <button class="btn " style="background: #0e2442; color:white; width:50%">Poster un commentaire</button>
             </div>
+            
         </form>
         </div>
 

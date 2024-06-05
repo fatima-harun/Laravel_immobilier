@@ -48,5 +48,8 @@ Route::post('/sauvegardeMoficationCategorie', [CategorieController::class,'sauve
 Route::get("/supprimerCategorie/{id}", [CategorieController::class, 'supprimerCategorie']);
 
 Route::get('/inscription', [RegisterController::class, 'ajoutPersonnel']);
+Route::get('/connexion',[RegisterController::class, 'connexion'] );
 Route::post('/sauvegardePersonnel', [RegisterController::class, 'sauvegardePersonnel']);
-
+Route::post('/traitementConnexion', [RegisterController::class, 'traitementConnexion']);
+Route::get('/espacePersonnel',  function() {return view('/personnels/espacePersonnel');});
+Route:: get('/deconnexion',[RegisterController::class,'deconnexion']);

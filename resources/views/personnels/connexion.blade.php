@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription</title>
+    <title>Connexion</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
@@ -60,25 +60,9 @@
             <div class="row justify-content-center align-items-center h-100">
                 <div class="col-md-6">
                     <div class="container">
-                        <h1 class="text-center">CRÉATION DE COMPTE</h1>
-                        <form action="/sauvegardePersonnel" method="POST">
+                        <h1 class="text-center">CONNEXION</h1>
+                        <form action="/traitementConnexion" method="POST">
                             @csrf
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="nom" name="nom" placeholder="Entrez votre nom" required> 
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Entrez votre prénom" required>
-                                </div>
-                            </div>
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-append">
@@ -95,26 +79,22 @@
                                     <input type="password" class="form-control" id="mot_de_passe" name="mot_de_passe" placeholder="Entrez votre mot de passe" required>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="telephone" name="telephone" placeholder="Entrez votre numéro de téléphone" required>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-block ">S'INSCRIRE</button>
+                            <button type="submit" class="btn btn-block ">SE CONNECTER</button>
                             <div style="font-weight: bold">
-                                <p style="float: left; color:white;">Déjà un compte?</p>
-                                <a href="/connexion" style="float: right; color:white;"> Se connecter</a>
+                                <p style="float: left; color:white;">Pas encore de compte?</p>
+                                <a href="/inscription" style="float: right; color:white;"> S'inscrire</a>
                             </div>
                         </form>
+                        @if (session('status'))
+                            <div class="alert alert-success">
+                                {{ session('status') }}
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </div>
    
-    
 </body>
 </html>

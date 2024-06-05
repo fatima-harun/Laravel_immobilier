@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use App\Models\Commentaire;
 use App\Models\Bien;
 
+
 class CommentaireController extends Controller
 {
     public function affichercommentaire($id)
     {
-         $bien = Bien::with('commentaires')->find($id);
-        return view('/biens/details/{{$bien->id}}',compact('bien'));
+        $bien = Bien::with('commentaires')->find($id);
+        $commentaires = $bien->commentaires()->paginate(2);
+       return view('biens.details', compact('bien', 'commentaires'));
     }
    
     public function sauvegardecommentaire(Request $request, $bien_id){
