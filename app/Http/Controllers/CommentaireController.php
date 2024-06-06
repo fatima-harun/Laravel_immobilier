@@ -6,19 +6,28 @@ use Illuminate\Http\Request;
 use App\Models\Commentaire;
 use App\Models\Bien;
 
-
 class CommentaireController extends Controller
 {
+    // Méthode pour afficher les commentaires d'un bien
     public function affichercommentaire($id)
     {
+        // Récupérer le bien par son identifiant avec ses commentaires
         $bien = Bien::with('commentaires')->find($id);
+        
+        // Paginer les commentaires, 2 par page
         $commentaires = $bien->commentaires()->paginate(2);
-       return view('biens.details', compact('bien', 'commentaires'));
+        
+        // Retourner la vue 'biens.details' avec le bien et ses commentaires
+        return view('biens.details', compact('bien', 'commentaires'));
     }
-   
-    public function sauvegardecommentaire(Request $request, $bien_id){
+
+    // Méthode pour sauvegarder un nouveau commentaire
+    public function sauvegardecommentaire(Request $request, $bien_id)
+    {
+        // Récupérer le bien par son identifiant
         $bien = Bien::find($bien_id);
 
+        // Valider les données de la requête
         $request->validate([
             'auteur' => 'required|max:50',
             'contenu' => 'required',
@@ -27,30 +36,51 @@ class CommentaireController extends Controller
             'auteur.max' => 'Le champ auteur ne peut pas dépasser 50 caractères.',
             'contenu.required' => 'Le champ contenu est requis.',
         ]);
+        
+        // Créer un nouveau commentaire avec les données validées
         Commentaire::create([
             'auteur' => $request->input('auteur'),
             'contenu' => $request->input('contenu'),
-            'bien_id' => $bien_id, 
+            'bien_id' => $bien_id,
         ]);
-    
+
+        // Rediriger vers la page précédente
         return back();
     }
-    
-    public function recuperercommentaire($id){
+
+    // Méthode pour récupérer un commentaire spécifique pour modification
+    public function recuperercommentaire($id)
+    {
+        // Récupérer le commentaire par son identifiant
         $commentaire = Commentaire::find($id);
-        return view('commentaires.recuperation',compact('commentaire'));
+        
+        // Retourner la vue 'commentaires.recuperation' avec le commentaire
+        return view('commentaires.recuperation', compact('commentaire'));
     }
 
-    public function modifiercommentaire(Request $request){
-       $commentaire = Commentaire::find($request->id);
-       $commentaire->update($request->all());
-       return redirect('detailsBien/' . $commentaire->bien_id);
+    // Méthode pour modifier un commentaire
+    public function modifiercommentaire(Request $request)
+    {
+        // Récupérer le commentaire par son identifiant
+        $commentaire = Commentaire::find($request->id);
+        
+        // Mettre à jour le commentaire avec les données de la requête
+        $commentaire->update($request->all());
+        
+        // Rediriger vers les détails du bien associé au commentaire
+        return redirect('detailsBien/' . $commentaire->bien_id);
     }
 
-    public function supprimercommentaire($id){
-     $commentaire = Commentaire::find($id);
-     $commentaire->delete();
-     return back();
+    // Méthode pour supprimer un commentaire
+    public function supprimercommentaire($id)
+    {
+        // Récupérer le commentaire par son identifiant
+        $commentaire = Commentaire::find($id);
+        
+        // Supprimer le commentaire
+        $commentaire->delete();
+        
+        // Rediriger vers la page précédente
+        return back();
     }
-
 }
